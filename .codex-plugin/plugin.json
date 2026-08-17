@@ -1,7 +1,7 @@
 {
   "name": "lean-engineer",
-  "version": "0.1.0",
-  "description": "Engineering discipline plus minimal implementation: understand first, make surgical changes, prefer the simplest correct solution, then verify it.",
+  "version": "0.1.1",
+  "description": "融合工程纪律与最小实现原则：先理解真实问题，只做必要修改，优先选择最简单且正确的方案，并对结果进行验证。",
   "author": {
     "name": "EricLad",
     "url": "https://github.com/EricLad"
@@ -14,16 +14,16 @@
   "hooks": "./hooks/hooks.json",
   "interface": {
     "displayName": "Lean Engineer",
-    "shortDescription": "Understand first. Change less. Verify.",
-    "longDescription": "Combines explicit assumptions, surgical diffs, YAGNI, reuse-first implementation, and verification into one coding workflow.",
+    "shortDescription": "先理解，少改动，再验证。",
+    "longDescription": "将显式确认假设、精准修改、YAGNI、复用优先、最小正确实现和结果验证融合为一套统一的软件工程工作流。",
     "developerName": "EricLad",
     "category": "Productivity",
-    "capabilities": ["Instructions", "Lifecycle hooks"],
+    "capabilities": ["工程指令", "生命周期钩子"],
     "websiteURL": "https://github.com/EricLad/codex-lean-engineer",
     "defaultPrompt": [
-      "Use Lean Engineer for this coding task.",
-      "Find the smallest correct implementation and verify it.",
-      "Review this diff for over-engineering and unrelated changes."
+      "使用 Lean Engineer 完成这个编程任务。",
+      "寻找最小且正确的实现方案，并验证结果。",
+      "审查这个 diff，检查是否存在过度设计和无关修改。"
     ]
   }
 }
