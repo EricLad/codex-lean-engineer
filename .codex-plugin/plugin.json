@@ -1,0 +1,29 @@
+{
+  "name": "lean-engineer",
+  "version": "0.1.0",
+  "description": "Engineering discipline plus minimal implementation: understand first, make surgical changes, prefer the simplest correct solution, then verify it.",
+  "author": {
+    "name": "EricLad",
+    "url": "https://github.com/EricLad"
+  },
+  "homepage": "https://github.com/EricLad/codex-lean-engineer",
+  "repository": "https://github.com/EricLad/codex-lean-engineer",
+  "license": "MIT",
+  "keywords": ["codex", "engineering", "yagni", "minimalism", "verification", "code-review"],
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json",
+  "interface": {
+    "displayName": "Lean Engineer",
+    "shortDescription": "Understand first. Change less. Verify.",
+    "longDescription": "Combines explicit assumptions, surgical diffs, YAGNI, reuse-first implementation, and verification into one coding workflow.",
+    "developerName": "EricLad",
+    "category": "Productivity",
+    "capabilities": ["Instructions", "Lifecycle hooks"],
+    "websiteURL": "https://github.com/EricLad/codex-lean-engineer",
+    "defaultPrompt": [
+      "Use Lean Engineer for this coding task.",
+      "Find the smallest correct implementation and verify it.",
+      "Review this diff for over-engineering and unrelated changes."
+    ]
+  }
+}
