@@ -1,6 +1,6 @@
 ---
 name: lean-review
-description: Review code or a diff for over-engineering, wrong assumptions, unrelated edits, unnecessary dependencies or abstractions, missed reuse opportunities, and missing verification. Use when the user asks for a focused engineering review or wants to reduce complexity without changing intended behavior.
+description: 审查代码或 diff 中的过度设计、错误假设、无关修改、不必要的依赖或抽象、遗漏的复用机会，以及缺失的验证步骤。适用于需要聚焦工程质量审查，或希望在不改变既有行为的前提下降低复杂度的场景。
 license: MIT
 ---
 
