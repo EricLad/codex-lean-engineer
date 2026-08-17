@@ -1,0 +1,21 @@
+{
+  "name": "lean-engineer",
+  "interface": {
+    "displayName": "Lean Engineer"
+  },
+  "plugins": [
+    {
+      "name": "lean-engineer",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/EricLad/codex-lean-engineer.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
