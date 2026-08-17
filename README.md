@@ -52,12 +52,35 @@ Hook state is stored under Codex's `PLUGIN_DATA` directory and contains only the
 
 ## Install from the repository marketplace
 
+First add this repository as a Codex marketplace:
+
 ```bash
 codex plugin marketplace add EricLad/codex-lean-engineer
-codex plugin add lean-engineer@lean-engineer
 ```
 
-Then start Codex, open `/hooks`, review/trust the bundled hooks, and start a new session.
+Then launch Codex:
+
+```bash
+codex
+```
+
+Inside the Codex CLI, open the plugin browser:
+
+```text
+/plugins
+```
+
+Select the `lean-engineer` marketplace, open **Lean Engineer**, and install it. After installation, start a **new Codex session** so the bundled skills and hooks are loaded.
+
+If the plugin contains hooks, open:
+
+```text
+/hooks
+```
+
+Review and trust the Lean Engineer hooks before using them.
+
+> Note: current Codex CLI installs marketplace plugins through the interactive `/plugins` browser. `codex plugin add ...` is not a supported installation command.
 
 ## Development
 
