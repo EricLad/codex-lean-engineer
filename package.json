@@ -1,8 +1,8 @@
 {
   "name": "codex-lean-engineer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
-  "description": "Codex plugin for disciplined minimal engineering.",
+  "description": "Codex 插件：强调工程纪律、最小正确实现与结果验证。",
   "license": "MIT",
   "scripts": {
     "test": "node --test test/*.test.js"
