@@ -5,17 +5,44 @@ A Codex-first coding plugin that combines two complementary ideas:
 - **Engineering discipline:** expose material assumptions, avoid unrelated edits, define success criteria, and verify the outcome.
 - **Implementation minimalism:** YAGNI, reuse first, standard library first, platform/framework-native features before new dependencies, and the smallest correct diff.
 
-The result is one workflow:
+For implementation work, the core workflow is:
 
 ```text
 UNDERSTAND -> SCOPE -> SIMPLIFY -> IMPLEMENT -> VERIFY
 ```
 
-## Why this exists
+## What it does
 
-Coding agents fail in two common ways at once: they can make unverified assumptions, and they can over-build the resulting solution. Lean Engineer treats those as one problem. It first constrains understanding and scope, then constrains implementation complexity, then requires evidence that the change works.
+Lean Engineer is an engineering-discipline layer, not a task-orchestration framework.
 
-Minimalism is deliberately lower priority than correctness, explicit requirements, security, data integrity, concurrency correctness, compatibility, and necessary error handling.
+It keeps implementation focused without overriding an external Controller, task contract, role assignment, approved implementation approach, or validation ownership. If another workflow already decided the architecture, Lean Engineer simplifies **inside that plan** instead of silently replacing it.
+
+Minimalism is deliberately lower priority than correctness, explicit requirements, security, data integrity, concurrency correctness, compatibility, necessary error handling, and explicit task contracts.
+
+## Role-aware subagents
+
+The plugin adapts its hook guidance to the delegated subagent role instead of injecting the same implementation template into every agent.
+
+```text
+worker / Developer
+  -> UNDERSTAND -> SCOPE -> SIMPLIFY -> IMPLEMENT -> VERIFY
+
+Explorer / scout
+  -> LOCATE -> TRACE -> MAP -> REPORT
+
+Reviewer / Integration Reviewer
+  -> UNDERSTAND -> CHECK -> REPORT
+
+Bug Investigator
+  -> EVIDENCE -> HYPOTHESES -> ROOT CAUSE -> HANDOFF
+
+unknown / default
+  -> role-neutral guidance until the delegated prompt clarifies the role
+```
+
+Read-only roles are explicitly told not to modify production code. If a generic `agent_type` is used, the plugin can refine the role from the delegated prompt when it explicitly identifies a Developer, Explorer, Reviewer, or Investigator role.
+
+This makes Lean Engineer suitable for use alongside orchestration workflows such as multi-agent development systems: the orchestrator decides **who does what**, while Lean Engineer constrains **how the assigned role behaves**.
 
 ## Modes
 
@@ -38,15 +65,17 @@ Short alias:
 /lean strict
 ```
 
-The plugin also ships a `lean-review` skill for review-only analysis of over-engineering, scope drift, wrong assumptions, reuse misses, and verification gaps.
+`strict` still respects external task contracts. It does not authorize a Developer to reopen an already-approved architecture or turn optional hardening into a blocking review issue without concrete evidence.
+
+The plugin also ships a `lean-review` skill for explicit review-only analysis of over-engineering, scope drift, wrong assumptions, reuse misses, and verification gaps. It is intended as a focused review tool, not as an automatic second reviewer for another workflow.
 
 ## Codex lifecycle hooks
 
 The plugin registers:
 
-- `SessionStart` — injects the active rules into new/resumed/cleared/compacted sessions.
-- `SubagentStart` — injects the same rules into subagents.
-- `UserPromptSubmit` — handles mode switches and re-injects the active rules when the mode changes.
+- `SessionStart` — injects the active Lean Engineer rules into new/resumed/cleared/compacted root sessions.
+- `SubagentStart` — reads Codex `agent_type` and injects role-appropriate guidance.
+- `UserPromptSubmit` — handles mode switches and can refine a generic subagent role from the delegated prompt.
 
 Hook state is stored under Codex's `PLUGIN_DATA` directory and contains only the selected mode.
 
@@ -97,12 +126,12 @@ npm test
 .agents/plugins/marketplace.json repository marketplace entry
 hooks/hooks.json                lifecycle hook registration
 hooks/runtime.js                persistent mode state + hook output
-hooks/instructions.js           always-on engineering rules
-hooks/session-start.js          SessionStart handler
-hooks/subagent-start.js         SubagentStart handler
-hooks/mode-tracker.js           UserPromptSubmit mode handler
+hooks/instructions.js           role-aware Lean Engineer rules
+hooks/session-start.js          root SessionStart handler
+hooks/subagent-start.js         agent_type-aware SubagentStart handler
+hooks/mode-tracker.js           mode switching + prompt role refinement
 skills/lean-engineer/SKILL.md   primary coding skill
-skills/lean-review/SKILL.md     review-only skill
+skills/lean-review/SKILL.md     explicit review-only skill
 ```
 
 ## Design sources
