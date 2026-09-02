@@ -1,7 +1,7 @@
 {
   "name": "lean-engineer",
-  "version": "0.1.0",
-  "description": "Engineering discipline plus minimal implementation: understand first, make surgical changes, prefer the simplest correct solution, then verify it.",
+  "version": "0.2.0",
+  "description": "Engineering discipline plus minimal implementation with role-aware subagent guidance: understand first, stay in scope, prefer the simplest correct solution, then verify it.",
   "author": {
     "name": "EricLad",
     "url": "https://github.com/EricLad"
@@ -9,13 +9,13 @@
   "homepage": "https://github.com/EricLad/codex-lean-engineer",
   "repository": "https://github.com/EricLad/codex-lean-engineer",
   "license": "MIT",
-  "keywords": ["codex", "engineering", "yagni", "minimalism", "verification", "code-review"],
+  "keywords": ["codex", "engineering", "yagni", "minimalism", "verification", "code-review", "subagents"],
   "skills": "./skills/",
   "hooks": "./hooks/hooks.json",
   "interface": {
     "displayName": "Lean Engineer",
-    "shortDescription": "Understand first. Change less. Verify.",
-    "longDescription": "Combines explicit assumptions, surgical diffs, YAGNI, reuse-first implementation, and verification into one coding workflow.",
+    "shortDescription": "Understand first. Stay in role. Change less. Verify.",
+    "longDescription": "Combines surgical implementation, YAGNI, reuse-first engineering, verification, and role-aware subagent guidance without overriding external task contracts.",
     "developerName": "EricLad",
     "category": "Productivity",
     "capabilities": ["Instructions", "Lifecycle hooks"],
