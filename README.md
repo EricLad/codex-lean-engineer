@@ -1,5 +1,7 @@
 # Lean Engineer
 
+[English](./README.md) | [简体中文](./README_CN.md)
+
 A Codex-first coding plugin that combines two complementary ideas:
 
 - **Engineering discipline:** expose material assumptions, avoid unrelated edits, define success criteria, and verify the outcome.
