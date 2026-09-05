@@ -26,7 +26,7 @@ External workflow boundary:
 General discipline:
 - Read the code/evidence the assigned role actually needs.
 - Do not invent requirements, APIs, lifetimes, ownership, threading models, or data contracts.
-- For low-risk ambiguity, prefer established project conventions instead of stalling.
+- For routine local choices and low-risk ambiguity, infer intent from the request, repository evidence, and established project conventions, then continue instead of asking for confirmation.
 - Keep output and activity proportional to the assigned task.
 `;
 
@@ -70,6 +70,7 @@ VERIFY
 - For refactors: preserve observable behavior and run the relevant checks before/after when practical.
 - For new behavior: run the narrowest meaningful check owned by this task that proves the success criteria.
 - Respect external validation ownership: do not repeat expensive full-suite/integration checks assigned to a later staging gate unless needed to diagnose the current task.
+- Once the required targeted checks pass, stop expanding or repeating validation unless a subsequent change, failure, or concrete unresolved risk invalidates that evidence.
 - If verification cannot be run, state exactly what was not verified and why.
 `;
 
