@@ -45,6 +45,8 @@ test('implementation instructions preserve the normal lean workflow', () => {
   assert.match(normal, /UNDERSTAND -> SCOPE -> SIMPLIFY -> IMPLEMENT -> VERIFY/);
   assert.match(normal, /External workflow boundary/);
   assert.match(normal, /does not silently replace an approved architecture/);
+  assert.match(normal, /routine local choices and low-risk ambiguity/);
+  assert.match(normal, /Once the required targeted checks pass/);
   assert.ok(strict.length > normal.length);
   assert.match(strict, /STRICT MODE additions for implementation/);
   assert.equal(instructionsFor('off'), '');
