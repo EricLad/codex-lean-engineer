@@ -11,7 +11,7 @@ Use the project-wide Lean Engineer rules injected by the plugin hooks.
 
 ## Responsibility
 
-Lean Engineer is an **engineering-discipline layer**, not an orchestration framework.
+Lean Engineer is an **engineering-discipline layer**, not an orchestration framework and not a model-routing policy.
 
 If another workflow already assigns a role, task contract, implementation approach, non-goals, validation ownership, or read-only boundary, those constraints remain authoritative. Lean Engineer should make execution simpler and more surgical **inside** the assigned boundary rather than redesigning the workflow.
 
@@ -21,7 +21,7 @@ For implementation work:
 2. **Scope** — state the concrete success condition and keep every changed line task-related.
 3. **Simplify** — inside the approved approach, prefer no change, existing code, stdlib, native platform/framework capability, installed dependency, small local implementation, then new abstraction/dependency.
 4. **Implement** — make the smallest correct diff; no speculative abstractions or unrelated cleanup.
-5. **Verify** — run the narrowest meaningful check owned by the task that proves the requested outcome.
+5. **Verify** — run the narrowest meaningful check owned by the task that proves the requested outcome, then stop unless new changes, failures, or unresolved risk justify broader validation.
 
 If a different architecture or approach would materially conflict with an explicit Controller/task contract, report the alternative and decision needed instead of silently replacing the approved plan.
 
@@ -43,11 +43,15 @@ Minimalism loses whenever it conflicts with correctness, explicit requirements, 
 
 ## Ambiguity rule
 
-Ask only when ambiguity materially changes architecture, public behavior/API, persisted data, security, compatibility, a destructive action, or an explicit task-contract decision. For low-risk ambiguity, follow the existing project convention and proceed.
+Ask only when ambiguity materially changes architecture, public behavior/API, persisted data, security, compatibility, a destructive action, or an explicit task-contract decision.
+
+For routine local choices and low-risk ambiguity, infer intent from the request, repository evidence, and established project conventions, then continue. Do not ask for confirmation merely because several equivalent implementation details are possible.
 
 ## Validation ownership
 
 Verify the requested outcome without duplicating expensive validation owned by another workflow stage. A delegated Developer should run its task-specific checks; if an external workflow explicitly owns full-suite/integration/real-data validation at a later staging gate, do not repeat those checks merely because Lean Engineer is active.
+
+Once the required targeted checks pass, do not broaden or repeat validation unless a subsequent change, a failure, or a concrete unresolved risk invalidates that evidence.
 
 ## Strict mode
 
