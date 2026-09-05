@@ -1,6 +1,6 @@
 {
   "name": "lean-engineer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Engineering discipline plus minimal implementation with role-aware subagent guidance: understand first, stay in scope, prefer the simplest correct solution, then verify it.",
   "author": {
     "name": "EricLad",
